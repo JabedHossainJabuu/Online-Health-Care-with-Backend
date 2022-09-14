@@ -84,8 +84,10 @@
                     </li>
                     @if(Route::has('login'))
                         @auth
+                            <li class="nav-item">
+                                <a class="nav-link" style="background-color: green; color: white;" href="{{ url('myAppointment') }}">My Appointment</a>
+                            </li>
                             <x-app-layout>
-
                             </x-app-layout>
                         @else
                     <li class="nav-item">
@@ -104,8 +106,22 @@
         </div> <!-- .container -->
     </nav>
 </header>
+{{--Showing the confirmed form message--}}
+@if(session()->has('message'))
+    <div class="alert alert-success">
+        <button type="button" class="close" data-bs-dismiss="alert">
+
+            {{ session()->get('message') }}
+        </button>
+
+    </div>
+
+@endif
+
+
 
 <div class="page-hero bg-image overlay-dark" style="background-image: url(./assets/img/bg_image_1.jpg);">
+
     <div class="hero-section">
         <div class="container text-center wow zoomIn">
             <span class="subhead">Let's make your life happier</span>
