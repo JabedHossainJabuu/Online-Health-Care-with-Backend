@@ -31,7 +31,7 @@
                 </div>
             </div>
 
-            <button type="submit" class="btn  mt-3 wow zoomIn" style="background: greengit">Submit Request</button>
+            <button type="submit" class="btn  mt-3 wow zoomIn" style="background: green">Submit Request</button>
         </form>
     </div>
 </div>
