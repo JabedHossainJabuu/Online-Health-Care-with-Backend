@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Doctor;
 use App\Models\Appointment;
+use function Symfony\Component\Console\Helper\resetIOCodepage;
 
 class AdminController extends Controller
 {
@@ -68,4 +69,33 @@ class AdminController extends Controller
         $data->delete();
         return redirect()->back();
     }
+
+    public function update_doctor($id)
+    {
+        $data = Doctor::find($id);
+        return view('admin.update_doctor', compact('data'));
+    }
+
+    public function edit_doctor(Request $request, $id){
+        $doctor = Doctor::find($id);
+
+        $doctor->name = $request->name;
+        $doctor->phone = $request->phone;
+        $doctor->speciality = $request->speciality;
+        $doctor->room = $request->room;
+
+        $image = $request->file;
+        if($image)
+        {
+            $imageName = time().'.'.$image->getClientOriginalExtension();
+            $request->file->move('doctorImage', $imageName);
+            $doctor->image = $imageName;
+        }
+
+
+        $doctor->save();
+        return redirect()->back()->with('message', 'Updated successfully');
+
+    }
+
 }
