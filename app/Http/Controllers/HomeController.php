@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Doctor;
 use App\Models\Appointment;
+use PhpParser\Comment\Doc;
 
 class HomeController extends Controller
 {
@@ -80,6 +81,28 @@ class HomeController extends Controller
         $data = appointment::find($id);
         $data->delete();
         return redirect()->back();
+    }
+
+    public function doctorPage()
+    {
+        $doctor = Doctor::all();
+        return view('user.Pages.Doctors', compact('doctor'));
+    }
+
+    public function About_us()
+    {
+        $doctor = Doctor::all();
+        return view('user.about', compact('doctor'));
+    }
+
+    public function blog()
+    {
+        return view('user.blog');
+    }
+
+    public function contact()
+    {
+        return view('user.contact');
     }
 
 

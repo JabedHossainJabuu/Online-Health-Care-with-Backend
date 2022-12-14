@@ -43,3 +43,9 @@ Route::get('/delete_doctor/{id}', [AdminController::class, 'delete_doctor']);
 Route::get('/update_doctor/{id}', [AdminController::class, 'update_doctor']);
 Route::post('/edit_doctor/{id}', [AdminController::class, 'edit_doctor']);
 
+
+//Doctor
+Route::get('/doctors', [HomeController::class, 'doctorPage'])->name('show.doctor');
+Route::get('/about-us', [HomeController::class, 'About_us'])->name('show.about-us');
+Route::get('/blogs', [HomeController::class, 'blog'])->name('show.blog');
+Route::get('/contact', [HomeController::class, 'contact'])->name('show.contact');
